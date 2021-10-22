@@ -16,7 +16,7 @@ export const Skills = () => {
                             </Td>
                         </Tr>
                         <Tr>
-                            <Td><ChevronRightIcon /><Text as="b">Frameworks  </Text></Td>
+                            <Td><ChevronRightIcon /><Text as="b">Frameworks</Text></Td>
                             <Td>ReactJs,AngularJs, Redux, Context API, HapiJs, Joi</Td>
                         </Tr>
                         <Tr>
