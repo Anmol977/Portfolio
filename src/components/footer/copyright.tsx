@@ -1,8 +1,7 @@
 import { Text, TextProps } from '@chakra-ui/layout'
-import * as React from 'react'
 
 export const Copyright = (props: TextProps) => (
     <Text fontSize="sm" {...props}>
-        &copy; {new Date().getFullYear()} Envelope, Inc. All rights reserved.
+        &copy; {new Date().getFullYear()}. All rights reserved.
     </Text>
 )
