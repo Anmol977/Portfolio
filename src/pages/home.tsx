@@ -8,13 +8,13 @@ import { Box, Container, Text, Flex } from '@chakra-ui/layout';
 export const Home = () => {
     return (
         <Box
-            w="100%"
+            maxW="7xl"
             mb={10}
+            mx="auto"
         >
             <Container
                 p={2}
                 mt="100px"
-                w="container.xl"
                 align="center"
                 overflow="auto"
             >

@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 export const Skills = () => {
     return (
         <Fragment>
-            <Heading my={5} textAlign="left">Skills</Heading>
+            <Heading my={5} mx="auto" textAlign="left">Skills</Heading>
             <Box borderWidth={2} maxW="xl" borderRadius="lg" overflow="wrap" >
                 <Table variant="simple" size="lg">
                     <Tbody>
