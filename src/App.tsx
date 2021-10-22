@@ -1,30 +1,30 @@
-import React from 'react';
 import './App.css';
 import Home from './pages/home';
-import Footer from './components/footer';
+// import Footer from './components/footer';
 import Navbar from './components/navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Box } from '@chakra-ui/layout';
+import { Fragment } from 'react';
+import { Box, Stack } from '@chakra-ui/layout';
+import { useColorModeValue } from '@chakra-ui/color-mode';
+import { Logo } from './components/footer/logo';
+import { SocialMediaLinks } from './components/footer/links';
+import { Copyright } from './components/footer/copyright';
 
 function App() {
+  const bg = useColorModeValue('#EDF2F7', '#20202380')
   return (
-    <div className="App">
-      <Router>
-        <Navbar></Navbar>
-        <Switch>
-          <Route exact path='/' component={Home} />
-        </Switch>
-      </Router>
-      <Box
-        position="fixed"
-        as="footer"
-        w="100%"
-        bottom="0"
-        opacity="0.5"
-      >
-        <Footer />
+    <Fragment >
+      <Navbar />
+      <Home />
+      <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" py="12" px={{ base: '4', md: '8' }} bg={bg} borderRadius="lg">
+        <Stack>
+          <Stack direction="row" spacing="4" align="center" justify="space-between">
+            <Logo />
+            <SocialMediaLinks />
+          </Stack>
+          <Copyright alignSelf={{ base: 'center', sm: 'start' }} />
+        </Stack>
       </Box>
-    </div>
+    </Fragment>
   );
 }
 

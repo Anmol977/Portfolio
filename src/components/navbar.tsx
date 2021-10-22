@@ -1,4 +1,3 @@
-import React from 'react'
 import { Flex, Heading, Box, useColorModeValue, Container, useColorMode, Stack, Menu, MenuList, MenuItem, MenuButton, IconButton, Link } from "@chakra-ui/react"
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './themeToggleButton'
@@ -24,19 +23,16 @@ const LinkItem = ({ href, path, children, ...props }: { href: any, path: any, ch
 
 export const Navbar = (props: any) => {
     const { path } = props;
-    const { toggleColorMode } = useColorMode()
-    const bg = useColorModeValue('#ffffff40', '#20202380')
-    const color = useColorModeValue("white", "gray.800")
-    const font = useColorModeValue('white', 'gray.200')
+    // const { toggleColorMode } = useColorMode()
+    const bg = useColorModeValue('#EDF2F7', '#20202380')
+    // const color = useColorModeValue("white", "gray.800")
+    // const font = useColorModeValue('white', 'gray.200')
+    const heading = useColorModeValue('red.500', 'white')
+
+
     return (
         <Box
-            position="fixed"
-            as="nav"
-            py={3}
-            w="100%"
-            bg={bg}
-            style={{ backdropFilter: 'blur(10px)' }}
-            zIndex={1}
+            role="contentinfo" mx="auto" maxW="7xl" py="5" px="5" bg={bg} borderRadius="lg"
         >
             <Container
                 display="flex"
@@ -47,7 +43,7 @@ export const Navbar = (props: any) => {
                 justify="space-between"
             >
                 <Flex align="center" mr={5}>
-                    <Heading as="h1" size="lg" letterSpacing={'tighter'} alignContent="center" color={useColorModeValue('red.500', 'white')}>
+                    <Heading as="h1" size="lg" letterSpacing={'tighter'} alignContent="center" color={heading}>
                         Anmol Chauhan
                     </Heading>
                 </Flex>
@@ -60,22 +56,11 @@ export const Navbar = (props: any) => {
                     flexGrow={1}
                     mt={{ base: 4, md: 0 }}
                 >
-                    <LinkItem href="/works" path={path}>
+                    <LinkItem href="https://github.com/anmol977" path={path}>
                         GitHub
                     </LinkItem>
-                    <LinkItem href="/posts" path={path}>
+                    <LinkItem href="https://www.linkedin.com/in/anmol-chauhan-13a899157/" path={path}>
                         LinkedIn
-                    </LinkItem>
-                    <LinkItem
-                        href="https://github.com/craftzdog/craftzdog-homepage"
-                        path={path}
-                    // display="inline-flex"
-                    // alignItems="center"
-                    // style={{ gap: 4 }}
-                    // pl={2}
-                    >
-                        {/* <IoLogoGithub /> */}
-                        Contact Me
                     </LinkItem>
                 </Stack>
 
@@ -91,15 +76,12 @@ export const Navbar = (props: any) => {
                                 aria-label="Options"
                             />
                             <MenuList>
-
-                                <MenuItem >About</MenuItem>
-                                <MenuItem >Works</MenuItem>
-                                <MenuItem >Posts</MenuItem>
-                                <MenuItem
-                                    href="https://github.com/craftzdog/craftzdog-homepage"
-                                >
-                                    View Source
-                                </MenuItem>
+                                <MenuItem ><LinkItem href="https://github.com/anmol977" path={path}>
+                                    GitHub
+                                </LinkItem></MenuItem>
+                                <MenuItem ><LinkItem href="https://www.linkedin.com/in/anmol-chauhan-13a899157/" path={path}>
+                                    LinkedIn
+                                </LinkItem></MenuItem>
                             </MenuList>
                         </Menu>
                     </Box>
