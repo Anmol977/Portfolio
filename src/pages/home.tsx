@@ -3,6 +3,7 @@ import myImg from '../resources/myImg.jpg'
 import "@fontsource/noto-mono"
 import Bio from '../components/bio';
 import Skills from '../components/skills';
+import Scene from '../components/three/three';
 import { Box, Container, Text, Flex } from '@chakra-ui/layout';
 
 export const Home = () => {
@@ -18,6 +19,7 @@ export const Home = () => {
                 align="center"
                 overflow="auto"
             >
+                <Scene />
                 <Box maxW="xl" borderWidth="2px" borderRadius="lg" py={5} px={10}  >
                     <Flex flexDirection="row" alignItems="center" justifyContent="center">
                         <Image src={myImg} borderRadius="full" w="auto" h="100px"></Image>
