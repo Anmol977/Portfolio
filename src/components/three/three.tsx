@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { AsciiEffect } from 'three/examples/jsm/effects/AsciiEffect'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+// import MODEL from './scene.glb'
 
 class Scene extends Component {
     scene: any;
@@ -13,6 +14,7 @@ class Scene extends Component {
     frameId: any;
     controls: any;
     effect: any;
+    mixer: any;
     startTime: any = new Date();
 
     constructor(props: any) {
@@ -23,30 +25,25 @@ class Scene extends Component {
     }
 
     componentDidMount() {
-        const width: number = 500;
-        const height: number = 500;
-        let aspRatio: number = width / height;
+        const w: number = 500;
+        const h: number = 400;
+        let aspRatio: number = w / h;
 
         const scene = new THREE.Scene();
         this.scene = scene;
 
         const camera: any = new THREE.PerspectiveCamera(75, aspRatio, 1, 1000);
-        // camera.position.y = 150;
-        // camera.position.z = 500;
         camera.position.z = 6;
+        camera.position.y = 2;
         this.camera = camera;
 
-        const renderer = new THREE.WebGLRenderer();
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(w, h);
+        renderer.setClearColor(0xffffff, 0);
+        renderer.outputEncoding = THREE.sRGBEncoding;
         this.renderer = renderer;
-
-        const sphere = new THREE.Mesh(new THREE.SphereGeometry(3, 20, 10), new THREE.MeshPhongMaterial({ flatShading: true }));
-        scene.add(sphere);
-        this.sphere = sphere;
-
-        const plane = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshBasicMaterial({ color: 0xe0e0e0 }));
-        plane.position.y = - 100;
-        plane.rotation.x = Math.PI / 2;
-        scene.add(plane);
 
         const pointLight1 = new THREE.PointLight(0xffffff);
         pointLight1.position.set(100, 100, 100);
@@ -56,22 +53,38 @@ class Scene extends Component {
         pointLight2.position.set(- 100, - 100, - 100);
         scene.add(pointLight2);
 
+        try {
+            const loader = new GLTFLoader();
+            loader.load('./scene.glb', (gltf) => {
+                console.log(gltf)
+                const root = gltf.scene;
+                gltf.scene.scale.set(0.8, 0.8, 0.8);
+                gltf.scene.position.x = 0;				    //Position (x = right+ left-) 
+                gltf.scene.position.y = -1;				    //Position (y = up+, down-)
+                gltf.scene.position.z = 0;
+                this.scene.add(root);
 
-        const effect = new AsciiEffect(this.renderer, ' .:-+*=%@#', { invert: true });
-        effect.setSize(width, height);
-        this.effect = effect;
 
-        const controls = new OrbitControls(this.camera, this.effect.domElement);
+            });
+        } catch (err) {
+            console.log(err)
+        }
+
+        let text = 'This work is based on "Oldbuild - Voxel art (Free)" (https://sketchfab.com/3d-models/oldbuild-voxel-art-free-92d728957d544fd68ed53f55d2119842) by Raghavprasanna (https://sketchfab.com/Raghavprasanna) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)';
+
+
+        const controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls = controls;
 
-        this.mount.appendChild(this.effect.domElement);
+
+        this.mount.appendChild(this.renderer.domElement);
 
         this.start();
     }
 
     componentWillUnmount() {
         this.stop();
-        this.mount.removeChild(this.effect.domElement);
+        this.mount.removeChild(this.renderer.domElement);
     }
 
     start() {
@@ -91,12 +104,8 @@ class Scene extends Component {
     }
 
     renderScene() {
-        // const timer: any = Date.now() - this.startTime;
-        // this.sphere.position.y = Math.abs(Math.sin(timer * 0.002)) * 150;
-        this.sphere.rotation.x = 2000 * 0.0003;
-        this.sphere.rotation.z = 2000 * 0.0002;
         this.controls.update();
-        this.effect.render(this.scene, this.camera);
+        this.renderer.render(this.scene, this.camera);
     }
 
     render() {
