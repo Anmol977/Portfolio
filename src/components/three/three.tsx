@@ -2,8 +2,6 @@ import { Component } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-// import MODEL from './scene.glb'
-
 class Scene extends Component {
     scene: any;
     camera: any;
@@ -37,7 +35,6 @@ class Scene extends Component {
         camera.position.y = 2;
         this.camera = camera;
 
-
         const renderer = new THREE.WebGLRenderer({ alpha: true });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(w, h);
@@ -63,14 +60,11 @@ class Scene extends Component {
                 gltf.scene.position.y = -1;				    //Position (y = up+, down-)
                 gltf.scene.position.z = 0;
                 this.scene.add(root);
-
-
             });
         } catch (err) {
             console.log(err)
         }
 
-        let text = 'This work is based on "Oldbuild - Voxel art (Free)" (https://sketchfab.com/3d-models/oldbuild-voxel-art-free-92d728957d544fd68ed53f55d2119842) by Raghavprasanna (https://sketchfab.com/Raghavprasanna) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)';
 
 
         const controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -118,10 +112,5 @@ class Scene extends Component {
     }
 
 }
-
-
-
-
-
 
 export default Scene;
