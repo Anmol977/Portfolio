@@ -2,6 +2,11 @@ import { Component } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { Spinner } from "@chakra-ui/react"
+
+function easeOutCirc(x: number) {
+    return Math.sqrt(1 - Math.pow(x - 1, 4))
+}
 class Scene extends Component {
     scene: any;
     camera: any;
@@ -14,6 +19,9 @@ class Scene extends Component {
     effect: any;
     mixer: any;
     startTime: any = new Date();
+    loading: boolean = true;
+    angle: number = 0;
+    radius: number = 10;
 
     constructor(props: any) {
         super(props);
@@ -22,9 +30,30 @@ class Scene extends Component {
         this.animate = this.animate.bind(this);
     }
 
+    async loadScene() {
+        return new Promise((resolve, reject) => {
+            let root;
+            const loader = new GLTFLoader();
+            loader.load('./scene.glb', (gltf) => {
+                console.log(gltf)
+                root = gltf.scene;
+                gltf.scene.scale.set(0.9, 0.9, 0.9);
+                gltf.scene.position.x = 0;
+                gltf.scene.position.y = -1;
+                gltf.scene.position.z = 0;
+                this.scene.add(root);
+                resolve(root)
+            }, undefined,
+                function (error: any) {
+                    reject(error)
+                }
+            );
+        })
+    }
+
     componentDidMount() {
-        const w: number = 500;
-        const h: number = 400;
+        const w: number = 300;
+        const h: number = 300;
         let aspRatio: number = w / h;
 
         const scene = new THREE.Scene();
@@ -50,22 +79,7 @@ class Scene extends Component {
         pointLight2.position.set(- 100, - 100, - 100);
         scene.add(pointLight2);
 
-        try {
-            const loader = new GLTFLoader();
-            loader.load('./scene.glb', (gltf) => {
-                console.log(gltf)
-                const root = gltf.scene;
-                gltf.scene.scale.set(0.8, 0.8, 0.8);
-                gltf.scene.position.x = 0;				    //Position (x = right+ left-) 
-                gltf.scene.position.y = -1;				    //Position (y = up+, down-)
-                gltf.scene.position.z = 0;
-                this.scene.add(root);
-            });
-        } catch (err) {
-            console.log(err)
-        }
-
-
+        this.loadScene().then(() => this.loading = false);
 
         const controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls = controls;
@@ -92,7 +106,9 @@ class Scene extends Component {
     }
 
     animate() {
-
+        this.camera.position.x = this.radius * Math.cos(this.angle);
+        this.camera.position.z = this.radius * Math.sin(this.angle);
+        this.angle += 0.01;
         this.frameId = window.requestAnimationFrame(this.animate)
         this.renderScene();
     }
@@ -103,9 +119,9 @@ class Scene extends Component {
     }
 
     render() {
+        { console.log(this.loading) }
         return (
             <div
-                // style={{ width: '300px', height: '300px' }}
                 ref={(mount) => { this.mount = mount }}
             />
         )

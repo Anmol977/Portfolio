@@ -12,17 +12,18 @@ export const Home = () => {
         <Box
             maxW="7xl"
             mb={10}
+            // align="center"
             mx="auto"
         >
+
             <Container
-                p={2}
-                mt="100px"
+                py={2}
+                mt="50px"
                 align="center"
                 overflow="auto"
             >
-
                 <Scene />
-                <Accordion allowToggle>
+                <Accordion allowToggle maxW="xl">
                     <AccordionItem>
                         <h2>
                             <AccordionButton>
@@ -33,12 +34,11 @@ export const Home = () => {
                             </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
-                            <Text fontSize={10} opcaity={1}>This work is based on "Oldbuild - Voxel art (Free)" (https://sketchfab.com/3d-models/oldbuild-voxel-art-free-92d728957d544fd68ed53f55d2119842) by Raghavprasanna (https://sketchfab.com/Raghavprasanna) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</Text>
+                            <Text fontSize={10}>This work is based on "Oldbuild - Voxel art (Free)" (https://sketchfab.com/3d-models/oldbuild-voxel-art-free-92d728957d544fd68ed53f55d2119842) by Raghavprasanna (https://sketchfab.com/Raghavprasanna) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)</Text>
                         </AccordionPanel>
                     </AccordionItem>
                 </Accordion>
-
-                <Box maxW="xl" borderWidth="2px" borderRadius="lg" py={5} px={10} mt={10}  >
+                <Box maxW="xl" borderWidth="2px" borderRadius="lg" py={5} px={10} mt={10} >
                     <Flex flexDirection="row" alignItems="center" justifyContent="center">
                         <Image src={myImg} borderRadius="full" w="auto" h="100px"></Image>
                         <Flex flexDirection="column">
