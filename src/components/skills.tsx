@@ -1,12 +1,12 @@
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Container, Heading, List, ListIcon, ListItem, Text } from '@chakra-ui/layout'
+import { Box, Heading, Text } from '@chakra-ui/layout'
 import { Table, Tr, Td, Tbody } from '@chakra-ui/table'
 import { Fragment } from 'react'
 
 export const Skills = () => {
     return (
         <Fragment>
-            <Heading my={5} textAlign="left">Bio</Heading>
+            <Heading my={5} textAlign="left">Skills</Heading>
             <Box borderWidth={2} maxW="xl" borderRadius="lg" overflow="wrap"  >
                 <Table variant="simple" size="lg" overflowX="auto">
                     <Tbody>

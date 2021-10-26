@@ -1,11 +1,12 @@
 import { Image } from '@chakra-ui/image';
 import myImg from '../resources/myImg.jpg'
-import "@fontsource/noto-mono"
+import "@fontsource/noto-mono";
 import Bio from '../components/bio';
 import Skills from '../components/skills';
 import Scene from '../components/three/three';
 import { Box, Container, Text, Flex } from '@chakra-ui/layout';
 import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel } from '@chakra-ui/react';
+import { Source } from '../components/Source';
 
 export const Home = () => {
     return (
@@ -28,7 +29,7 @@ export const Home = () => {
                         <h2>
                             <AccordionButton>
                                 <Box flex="1" textAlign="left">
-                                    CC
+                                    <Text as="b">CC</Text>
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>
@@ -50,6 +51,7 @@ export const Home = () => {
                 </Box>
                 <Bio />
                 <Skills />
+                <Source />
             </Container>
         </Box >
     )
