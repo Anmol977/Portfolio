@@ -3,7 +3,7 @@ import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react"
-import { theme } from './theme/theme'
+import theme from './theme/theme'
 
 ReactDOM.render(
   <React.StrictMode>

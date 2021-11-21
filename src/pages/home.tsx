@@ -7,6 +7,7 @@ import Scene from '../components/three/three';
 import { Box, Container, Text, Flex } from '@chakra-ui/layout';
 import { Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel } from '@chakra-ui/react';
 import { Source } from '../components/Source';
+import { Hobbies } from '../components/Hobbies';
 
 export const Home = () => {
     return (
@@ -50,6 +51,7 @@ export const Home = () => {
                     </Flex>
                 </Box>
                 <Bio />
+                <Hobbies />
                 <Skills />
                 <Source />
             </Container>

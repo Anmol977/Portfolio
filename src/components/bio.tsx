@@ -6,7 +6,7 @@ import { Fragment } from 'react'
 export const Bio = () => {
     return (
         <Fragment>
-            <Heading my={5} textAlign="left">Bio</Heading>
+            <Heading my={5} textAlign="left" variant="section-title">Bio</Heading>
             <Box borderWidth={2} maxW="xl" borderRadius="lg" overflow="wrap"  >
                 <Table variant="simple" size="lg">
                     <Tbody>

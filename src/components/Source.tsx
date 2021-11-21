@@ -7,10 +7,10 @@ export const Source = () => {
     const bg = useColorModeValue(themeColors.light, themeColors.dark)
     return (
         <Fragment>
-            <Box borderWidth={2} maxW="xl" borderRadius="lg" overflow="wrap" my={10} p={5} bg={bg} borderColor={bg}>
+            <Box borderWidth={2} maxW="xl" borderRadius="lg" overflow="wrap" mt={8} p={5} bg={bg} borderColor={bg}>
                 <Text p={5} as="b">Source code of my site: </Text>
-                <Button colorScheme="teal">
-                    <a href="https://github.com/anmol977/Portfolio" target="_blank">
+                <Button colorScheme="blue">
+                    <a href="https://github.com/anmol977/Portfolio" rel="noreferrer" target="_blank">
                         <Flex flexDirection="row">
                             <FaGithub />
                             <Text pl={3}>Check it out !</Text>

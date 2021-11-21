@@ -1,34 +1,33 @@
-import { Flex, Heading, Box, useColorModeValue, Container, useColorMode, Stack, Menu, MenuList, MenuItem, MenuButton, IconButton, Link } from "@chakra-ui/react"
+import { Flex, Heading, Box, useColorModeValue, Container, Stack, Menu, MenuList, MenuItem, MenuButton, IconButton, Link, Button } from "@chakra-ui/react"
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './themeToggleButton'
+import { themeColors } from "../theme/theme"
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 
 const LinkItem = ({ href, path, children, ...props }: { href: any, path: any, children: any }) => {
     const active = path === href
     const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
     return (
-        <a href={href}>
-            <Link
-                p={2}
-                bg={active ? 'grassTeal' : undefined}
-                color={active ? '#202023' : inactiveColor}
-                _target='_blank'
-                {...props}
-            >
-                {children}
-            </Link>
-        </a>
+        // <a href={href}>
+        <Link
+            p={2}
+            bg={active ? 'grassTeal' : undefined}
+            color={active ? '#202023' : inactiveColor}
+            href={href}
+            _target='_blank'
+            {...props}
+        >
+            {children}
+        </Link>
+        // </a>
     )
 }
 
 export const Navbar = (props: any) => {
     const { path } = props;
-    // const { toggleColorMode } = useColorMode()
-    const bg = useColorModeValue('#EDF2F7', '#20202380')
-    // const color = useColorModeValue("white", "gray.800")
-    // const font = useColorModeValue('white', 'gray.200')
+    const bg = useColorModeValue(themeColors.light, themeColors.dark)
     const heading = useColorModeValue('red.500', 'white')
-
 
     return (
         <Box
@@ -62,6 +61,11 @@ export const Navbar = (props: any) => {
                     <LinkItem href="https://www.linkedin.com/in/anmol-chauhan-13a899157/" path={path}>
                         LinkedIn
                     </LinkItem>
+                    <LinkItem href="https://github.com/anmol977/Portfolio" path={path}>
+                        <Button as="a" leftIcon={<FaGithub fontSize="20px" />} variant="solid">
+                            Source
+                        </Button>
+                    </LinkItem>
                 </Stack>
 
                 <Box flex={1} align="right">
@@ -81,6 +85,10 @@ export const Navbar = (props: any) => {
                                 </LinkItem></MenuItem>
                                 <MenuItem ><LinkItem href="https://www.linkedin.com/in/anmol-chauhan-13a899157/" path={path}>
                                     LinkedIn
+                                </LinkItem></MenuItem>
+                                <MenuItem ><LinkItem href="https://github.com/anmol977/Portfolio" path={path}>
+                                    <IconButton aria-label="GitHub" icon={<FaGithub fontSize="20px" />} />
+                                    Source
                                 </LinkItem></MenuItem>
                             </MenuList>
                         </Menu>

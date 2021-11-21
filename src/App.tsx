@@ -1,6 +1,5 @@
 import './App.css';
 import Home from './pages/home';
-// import Footer from './components/footer';
 import Navbar from './components/navbar';
 import { Fragment } from 'react';
 import { Box, Stack } from '@chakra-ui/layout';

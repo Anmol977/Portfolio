@@ -1,29 +1,24 @@
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Heading, Text } from '@chakra-ui/layout'
-import { Table, Tr, Td, Tbody } from '@chakra-ui/table'
+import { Box, Heading, List, ListItem, Text } from '@chakra-ui/layout'
 import { Fragment } from 'react'
 
 export const Skills = () => {
     return (
         <Fragment>
-            <Heading my={5} textAlign="left">Skills</Heading>
+            <Heading my={5} textAlign="left" variant="section-title">Skills</Heading>
             <Box borderWidth={2} maxW="xl" borderRadius="lg" overflow="wrap"  >
-                <Table variant="simple" size="lg" overflowX="auto">
-                    <Tbody>
-                        <Tr>
-                            <Td><ChevronRightIcon /><Text as="b">Languages </Text></Td>
-                            <Td>JavaScript, NodeJs, c++, Typescript</Td>
-                        </Tr>
-                        <Tr>
-                            <Td><ChevronRightIcon /><Text as="b">Frameworks </Text></Td>
-                            <Td>ReactJs,AngularJs, Redux, HapiJs, Joi</Td>
-                        </Tr>
-                        <Tr>
-                            <Td><ChevronRightIcon /><Text as="b">Libraries </Text></Td>
-                            <Td>Boost(c++), 3Js</Td>
-                        </Tr>
-                    </Tbody>
-                </Table>
+                <List align="left" pt={10} px={10}>
+                    <ListItem><ChevronRightIcon /><Text as="b">Languages </Text></ListItem>
+                    <ListItem>JavaScript, NodeJs, c++, Typescript</ListItem>
+                </List>
+                <List align="left" pt={10} px={10}>
+                    <ListItem><ChevronRightIcon /><Text as="b">Frameworks </Text></ListItem>
+                    <ListItem>ReactJs,AngularJs, Redux, HapiJs</ListItem>
+                </List>
+                <List align="left" pt={10} px={10} pb={10}>
+                    <ListItem><ChevronRightIcon /><Text as="b">Libraries </Text></ListItem>
+                    <ListItem>Boost(C++), 3Js</ListItem>
+                </List>
             </Box>
         </Fragment >
     )
