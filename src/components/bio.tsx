@@ -23,7 +23,7 @@ export const Bio = () => {
                             <Td>12th CBSE Board (Non Medical)</Td>
                         </Tr>
                         <Tr>
-                            <Td><ChevronRightIcon /><Text as="b">2019 - present </Text></Td>
+                            <Td><ChevronRightIcon /><Text as="b">2019 - 2023 </Text></Td>
                             <Td>Bachelors in Computer Science and Engineering, BVCOE, New Delhi</Td>
                         </Tr>
                     </Tbody>
